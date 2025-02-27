@@ -1,0 +1,16 @@
+def insertion_sort(arr):
+    n = len(arr)
+    for i in range(1, n):
+        key = arr[i]  # 取出未排序部分的第一个元素
+        j = i - 1
+        # 将 key 插入到已排序部分的正确位置
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]  # 向后移动元素
+            j -= 1
+        arr[j + 1] = key  # 插入 key
+    return arr
+
+# 示例
+arr = [5, 2, 4, 6, 1, 3]
+sorted_arr = insertion_sort(arr)
+print(sorted_arr)  # 输出: [1, 2, 3, 4, 5, 6]
