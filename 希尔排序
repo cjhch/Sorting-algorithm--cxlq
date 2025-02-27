@@ -1,0 +1,20 @@
+def shell_sort(arr):
+    n = len(arr)
+    gap = n // 2  # 初始增量
+    while gap > 0:
+        # 对每个子列表进行插入排序
+        for i in range(gap, n):
+            temp = arr[i]  # 当前待插入元素
+            j = i
+            # 在子列表中找到合适的位置插入
+            while j >= gap and arr[j - gap] > temp:
+                arr[j] = arr[j - gap]
+                j -= gap
+            arr[j] = temp
+        gap //= 2  # 缩小增量
+    return arr
+
+# 示例
+arr = [8, 3, 1, 2, 7, 5, 6, 4]
+sorted_arr = shell_sort(arr)
+print(sorted_arr)  # 输出: [1, 2, 3, 4, 5, 6, 7, 8]
