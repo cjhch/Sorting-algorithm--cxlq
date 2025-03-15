@@ -34,30 +34,30 @@
   ○ 列表完全有序：[1, 1, 2, 3, 6, 8, 10]
 
 主要代码：
-int partition(int arr[], int low, int high) {Int partition(Int arr[], Int low, Int high) {int partition(int arr[], int low, int high) {int partition(int arr[], int low, int high) {
+int partition(int arr[], int low, int high) {Int partition(Int arr[], Int low, Int high) {int partition(int arr[], int low, int high) {int partition(int arr[], int low, int high) {int partition(int arr[], int low, int high) {int partition(int arr[], int low, int high) {int partition(int arr[], int low, int high) {int partition(int arr[], int low, int high) {int partition(int arr[], int low, int high) {
     // 选择最后一个元素作为基准值
-    int pivot = arr[high];   Int pivot = arr[high]；Int pivot = arr[high]；Int pivot = arr[high]；
+    int pivot = arr[high];   Int pivot = arr[high]；Int pivot = arr[high]；Int pivot = arr[high]；Int pivot = arr[high]；Int pivot = arr[high];Int pivot = arr[high]；
     // 初始化小于基准值的元素的边界
-    int i = low - 1;Int I = low - 1；int i = low - 1；
+    int i = low - 1;Int I = low - 1；int i = low - 1；int i = low - 1；
 
     // 遍历数组，将小于基准值的元素交换到左边
-    for (int j = low; j <= high - 1; j++) {For (int j = low；J <= high - 1；J) {For (int j = low；J <= high - 1；j) {For (int j = low; j <= high - 1; j) {
+    for (int j = low; j <= high - 1; j++) {For (int j = low；J <= high - 1；J) {For (int j = low；J <= high - 1；j) {For (int j = low; j <= high - 1; j) {For (int j = low；J <= high - 1；j) {For (int j = low; j <= high - 1;j) {For (int j = low; j <= high - 1;j) {For (int j = low；J <= high - 1；j) {
         if (arr[j] < pivot) {如果（arr[j] < pivot） {如果（arr[j] < pivot） {{(arr[j] < pivot) {
             i++;   我;
             swap(arr[i], arr[j]);   交换(arr[我],arr [j]);
         }
     }
     // 将基准值放到正确的位置
-    swap(arr[i + 1], arr[high]);交换（arr[i 1], arr[high]）；交换(arr[我],arr[高]);交换(arr[我],arr(高));
+    swap(arr[i + 1], arr[high]);交换（arr[i 1], arr[high]）；交换(arr[我],arr[高]);交换(arr[我],arr(高));swap(arr[i   1], arr[high]);交换（arr[i 1], arr[high]）；交换(arr[我],arr[高]);交换(arr[我],arr(高));
     // 返回基准值的最终位置
-    return i + 1;   返回I 1；返回I 1；1；
+    return i + 1;   返回I 1；返回I 1；1；return i   1;   返回I 1；返回I 1；1；
 }
 
 // 快速排序函数
 // 参数 arr 为待排序的数组，low 为数组的起始索引，high 为数组的结束索引
 void Quick_Sort(int arr[], int low, int high) {
     // 当起始索引小于结束索引时，说明数组还可以继续排序
-    if (low < high) {If (low < high) {if (low < high) {if (low < high) {
+    if (low < high) {If (low < high) {if (low < high) {if (low < high) {if (low < high) {if (low < high) {if (low < high) {if (low < high) {
         // 进行分区操作，得到基准值的最终位置
         int pi = partition(arr, low, high);Int PI = partition(arr, low, high)；int pi = partition(arr, low, high)；
 
