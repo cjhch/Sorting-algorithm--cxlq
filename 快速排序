@@ -55,4 +55,37 @@ void Quick_Sort(int arr[], int low, int high) {
 ● 缺点：
   ○ 需要额外的存储空间，空间复杂度为 O(n)。
   ○ 对于小规模数据，性能可能不如插入排序等简单算法
+基准数优化
+● 快速排序在某些输入下的时间效率可能降低。举一个极端例子，假设输入数组是完全倒序的，由于我们选择最左端元素作为基准数，那么在哨兵划分完成后，
+基准数被交换至数组最右端，导致左子数组长度为 n−1、右子数组长度为 0 。如此递归下去，每轮哨兵划分后都有一个子数组的长度为 0 ，分治策略失效，
+快速排序退化为“冒泡排序”的近似形式。为了尽量避免这种情况发生，我们可以优化哨兵划分中的基准数的选取策略。例如，我们可以随机选取一个元素作为基准数。
+然而，如果运气不佳，每次都选到不理想的基准数，效率仍然不尽如人意。需要注意的是，编程语言通常生成的是“伪随机数”。如果我们针对伪随机数序列构建
+一个特定的测试样例，那么快速排序的效率仍然可能劣化。为了进一步改进，我们可以在数组中选取三个候选元素（通常为数组的首、尾、中点元素），并将这三个候选元素的中位数作为基准数。
+这样一来，基准数“既不太小也不太大”的概率将大幅提升。当然，我们还可以选取更多候选元素，以进一步提高算法的稳健性。采用这种方法后，时间复杂度劣化至 O(n2) 的概率大大降低。
+int medianThree(int nums[], int left, int mid, int right) {
+    int l = nums[left], m = nums[mid], r = nums[right];
+    if ((l <= m && m <= r) || (r <= m && m <= l))
+        return mid; // m 在 l 和 r 之间
+    if ((m <= l && l <= r) || (r <= l && l <= m))
+        return left; // l 在 m 和 r 之间
+    return right;
+}
 
+/* 哨兵划分（三数取中值） */
+int partitionMedian(int nums[], int left, int right) {
+    // 选取三个候选元素的中位数
+    int med = medianThree(nums, left, (left + right) / 2, right);
+    // 将中位数交换至数组最左端
+    swap(nums, left, med);
+    // 以 nums[left] 为基准数
+    int i = left, j = right;
+    while (i < j) {
+        while (i < j && nums[j] >= nums[left])
+            j--; // 从右向左找首个小于基准数的元素
+        while (i < j && nums[i] <= nums[left])
+            i++;          // 从左向右找首个大于基准数的元素
+        swap(nums, i, j); // 交换这两个元素
+    }
+    swap(nums, i, left); // 将基准数交换至两子数组的分界线
+    return i;            // 返回基准数的索引
+}
