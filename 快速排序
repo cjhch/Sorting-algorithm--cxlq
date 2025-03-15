@@ -6,38 +6,65 @@
 2. 分区：将列表重新排列，使得所有小于基准元素的元素都在基准的左侧，所有大于基准元素的元素都在基准的右侧。基准元素的位置在分区完成后确定。
 3. 递归排序：对基准元素左侧和右侧的子列表分别递归地进行快速排序。
 4. 合并：由于分区操作是原地进行的，递归结束后整个列表已经有序。
+
+假设有一个待排序的列表 [3, 6, 8, 10, 1, 2, 1]，选择最后一个元素作为基准（pivot），排序过程如下：
+1. 初始状态：
+  ○ 列表：[3, 6, 8, 10, 1, 2, 1]。
+  ○ 基准元素：1（最后一个元素）。
+2. 第一轮分区：
+  ○ 将小于基准的元素放在左侧，大于基准的元素放在右侧。
+  ○ 分区后列表：[1, 1, 2, 10, 6, 8, 3]。
+  ○ 基准元素 1 的位置确定。
+3. 递归排序：
+  ○ 对左侧子列表 [1] 和右侧子列表 [2, 10, 6, 8, 3] 分别进行快速排序。
+  ○ 左侧子列表已经有序。
+  ○ 对右侧子列表 [2, 10, 6, 8, 3] 选择基准元素 3（最后一个元素）：
+    ■ 分区后列表：[2, 3, 6, 8, 10]。
+    ■ 基准元素 3 的位置确定。
+  ○ 继续递归排序右侧子列表 [6, 8, 10]：
+    ■ 选择基准元素 10（最后一个元素）：
+      ● 分区后列表：[6, 8, 10]。
+      ● 基准元素 10 的位置确定。
+    ■ 继续递归排序左侧子列表 [6, 8]：
+      ● 选择基准元素 8（最后一个元素）：
+        ○ 分区后列表：[6, 8]。
+        ○ 基准元素 8 的位置确定。
+      ● 继续递归排序左侧子列表 [6]，已经有序。
+4. 最终结果：
+  ○ 列表完全有序：[1, 1, 2, 3, 6, 8, 10]
+
 主要代码：
-int partition(int arr[], int low, int high) {Int partition(Int arr[], Int low, Int high) {
+int partition(int arr[], int low, int high) {Int partition(Int arr[], Int low, Int high) {int partition(int arr[], int low, int high) {int partition(int arr[], int low, int high) {
     // 选择最后一个元素作为基准值
-    int pivot = arr[high];   Int pivot = arr[high]；
+    int pivot = arr[high];   Int pivot = arr[high]；Int pivot = arr[high]；Int pivot = arr[high]；
     // 初始化小于基准值的元素的边界
-    int i = low - 1;Int I = low - 1；
+    int i = low - 1;Int I = low - 1；int i = low - 1；
 
     // 遍历数组，将小于基准值的元素交换到左边
-    for (int j = low; j <= high - 1; j++) {For (int j = low；J <= high - 1；J) {
-        if (arr[j] < pivot) {如果（arr[j] < pivot） {
+    for (int j = low; j <= high - 1; j++) {For (int j = low；J <= high - 1；J) {For (int j = low；J <= high - 1；j) {For (int j = low; j <= high - 1; j) {
+        if (arr[j] < pivot) {如果（arr[j] < pivot） {如果（arr[j] < pivot） {{(arr[j] < pivot) {
             i++;   我;
             swap(arr[i], arr[j]);   交换(arr[我],arr [j]);
         }
     }
     // 将基准值放到正确的位置
-    swap(arr[i + 1], arr[high]);交换（arr[i 1], arr[high]）；
+    swap(arr[i + 1], arr[high]);交换（arr[i 1], arr[high]）；交换(arr[我],arr[高]);交换(arr[我],arr(高));
     // 返回基准值的最终位置
-    return i + 1;   返回I 1；
+    return i + 1;   返回I 1；返回I 1；1；
 }
 
 // 快速排序函数
 // 参数 arr 为待排序的数组，low 为数组的起始索引，high 为数组的结束索引
 void Quick_Sort(int arr[], int low, int high) {
     // 当起始索引小于结束索引时，说明数组还可以继续排序
-    if (low < high) {If (low < high) {
+    if (low < high) {If (low < high) {if (low < high) {if (low < high) {
         // 进行分区操作，得到基准值的最终位置
-        int pi = partition(arr, low, high);Int PI = partition(arr, low, high)；
+        int pi = partition(arr, low, high);Int PI = partition(arr, low, high)；int pi = partition(arr, low, high)；
 
         // 递归排序基准值左边的子数组
-        Quick_Sort(arr, low, pi - 1);Quick_Sort(arr, low, pi - 1)；
+        Quick_Sort(arr, low, pi - 1);Quick_Sort(arr, low, pi - 1)；Quick_Sort(arr, low, pi - 1)；
         // 递归排序基准值右边的子数组
-        Quick_Sort(arr, pi + 1, high);快速排序（arr, pi 1, high）；
+        Quick_Sort(arr, pi + 1, high);快速排序（arr, pi 1, high）；Quick_Sort(arr, pi 1, high)；
     }
 }
 时间复杂度
